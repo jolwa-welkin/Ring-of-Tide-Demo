@@ -1,9 +1,10 @@
-<!doctype html>
+# Re-create the pure JSX single-file version for GitHub Pages.
+html_jsx = r"""<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>浪之环 · Today Demo (Single File)</title>
+  <title>浪之环 · Today Demo (Single File, JSX)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @keyframes orbit-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
@@ -25,26 +26,19 @@
   <!-- React & ReactDOM UMD -->
   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <!-- Babel Standalone for in-browser TSX/JSX -->
+  <!-- Babel Standalone for in-browser JSX (react preset only) -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body class="min-h-[100dvh] bg-black text-white">
-  <div id="root"></div>
+  <div id="root">加载中…</div>
 
-  <script type="text/babel" data-presets="typescript,react">
+  <script type="text/babel" data-presets="react">
     const { useState, useMemo, useRef, useEffect } = React;
 
     const FLIP_COUNT = 8;
     const POOLS = ["health", "social", "study", "life"];
+    const POOL_NAME = { health: "健康", social: "社交", study: "学习", life: "生活" };
 
-    const POOL_NAME = {
-      health: "健康",
-      social: "社交",
-      study:  "学习",
-      life:   "生活",
-    };
-
-    // --------- 时间与存储 ---------
     function fmtDate(d = new Date()) {
       const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,"0"), day=String(d.getDate()).padStart(2,"0");
       return `${y}-${m}-${day}`;
@@ -52,22 +46,17 @@
     const today = fmtDate();
 
     function loadState() {
-      try {
-        const raw = localStorage.getItem("ring:t1");
-        return raw ? JSON.parse(raw) : null;
-      } catch {
-        return null;
-      }
+      try { const raw = localStorage.getItem("ring:t1"); return raw ? JSON.parse(raw) : null; }
+      catch { return null; }
     }
     function saveState(s) { localStorage.setItem("ring:t1", JSON.stringify(s)); }
 
-    // --------- 外环组件（保证旋转不断） ---------
     function getAnimDelayOnce() {
       if (typeof window === "undefined") return "0s";
       const w = window;
       if (!w.__RING_TIDE_T0__) w.__RING_TIDE_T0__ = performance.now();
       const elapsed = (performance.now() - w.__RING_TIDE_T0__) / 1000;
-      return `-${elapsed}s`; // 负延迟保证续帧
+      return `-${elapsed}s`;
     }
 
     function orbitPropsEqual(prevProps, nextProps) {
@@ -80,10 +69,9 @@
       return true;
     }
 
-    const OuterOrbit = React.memo(function OuterOrbit({ center, radius, angles, flipTasks, onPress, onHover, onLeave }){
-      const box = radius * 2 + 2;
-      const delayRef = useRef(getAnimDelayOnce()); // 固定一次，避免每次渲染改变 animationDelay
-
+    const OuterOrbit = React.memo(function OuterOrbit({ center, radius, angles, flipTasks, onPress, onHover, onLeave }) {
+      const box = radius*2 + 2;
+      const delayRef = useRef(getAnimDelayOnce());
       return (
         <div className="absolute" style={{ left:center.x, top:center.y, transform: "translate(-50%, -50%)" }}>
           <div className="relative orbit" style={{ width: box, height: box, animationDelay: delayRef.current }}>
@@ -112,7 +100,6 @@
       );
     }, orbitPropsEqual);
 
-    // --------- 主页面 ---------
     function App() {
       const [state, setState] = useState(() => {
         return loadState() || {
@@ -120,14 +107,12 @@
           days: { [today]: { flipTasks: Array.from({length: FLIP_COUNT}, (_,i)=>({ label: "Flip Task " + (i+1), done: false })), forged: false } },
         };
       });
-
       useEffect(() => saveState(state), [state]);
 
       const size = 640;
       const center = { x: size/2, y: size/2 };
       const orbitR = 220;
 
-      // 固定角度
       const angles = useMemo(() => {
         const step = 360 / FLIP_COUNT;
         return Array.from({length: FLIP_COUNT}, (_,i)=> i*step);
@@ -167,7 +152,6 @@
 
             <div className="flex items-center justify-center">
               <div className="relative rounded-3xl border border-white/10 bg-white/5 backdrop-blur p-6 shadow-sm" style={{ width: size, height: size }}>
-                {/* 中心圆与象限分割 */}
                 <div className="absolute left-1/2 top-1/2" style={{ transform: "translate(-50%,-50%)" }}>
                   <div className="relative w-[360px] h-[360px]">
                     <div className="absolute inset-0 rounded-full border border-white/25"></div>
@@ -181,7 +165,6 @@
                   </div>
                 </div>
 
-                {/* 外环 */}
                 <OuterOrbit
                   center={center}
                   radius={orbitR}
@@ -203,3 +186,7 @@
   </script>
 </body>
 </html>
+"""
+with open('/mnt/data/index_github_pages_jsx.html', 'w', encoding='utf-8') as f:
+    f.write(html_jsx)
+print("Recreated /mnt/data/index_github_pages_jsx.html")
