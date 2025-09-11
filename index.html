@@ -1,10 +1,39 @@
 <!doctype html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="utf-8" />
-    <title>测试页面</title>
-  </head>
-  <body>
-    <h1 style="color:red;">hello world</h1>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <title>浪之环 Demo</title>
+  <style>
+    body { font-family: "微软雅黑", Arial, sans-serif; background: #f9fafc; max-width: 480px; margin: 40px auto; }
+    h1 { color: #2080d0; }
+    .btns { margin: 24px 0; display: flex; gap: 1em; }
+    button { padding: 10px 24px; font-size: 1.1em; border-radius: 8px; border: none; background: #e6f7ff; cursor: pointer; }
+    button:hover { background: #bee3f8; }
+    .result { margin-top: 2em; font-size: 1.2em; color: #222; min-height: 40px; }
+  </style>
+</head>
+<body>
+  <h1>浪之环 Demo</h1>
+  <div class="btns">
+    <button onclick="draw('健康')">健康</button>
+    <button onclick="draw('社交')">社交</button>
+    <button onclick="draw('学习')">学习</button>
+    <button onclick="draw('生活')">生活</button>
+  </div>
+  <div class="result" id="result"></div>
+
+  <script>
+    const tasks = {
+      健康: ["早睡一次", "喝足8杯水", "快走30分钟", "做拉伸", "多吃蔬菜"],
+      社交: ["联系一位老朋友", "给家人打电话", "和同事共进午餐", "发条朋友圈", "赞美身边的人"],
+      学习: ["阅读10页书", "学习一项新知识", "看一节网课", "写一段学习笔记", "复习旧知识"],
+      生活: ["收拾房间", "做一顿饭", "整理书桌", "丢弃不用的物品", "给自己放松半小时"]
+    };
+    function draw(type) {
+      const pool = tasks[type];
+      const idx = Math.floor(Math.random() * pool.length);
+      document.getElementById('result').textContent = `今天的${type}任务：${pool[idx]}`;
+    }
+  </script>
+</body>
 </html>
