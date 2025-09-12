@@ -107,9 +107,9 @@
       });
       useEffect(() => saveState(state), [state]);
 
-      const size = 640;
+      const outerR = 220;    // 外圈半径
+      const size = 640;      // 画布区尺寸
       const center = { x: size/2, y: size/2 };
-      const orbitR = 220;
 
       const angles = useMemo(() => {
         const step = 360 / FLIP_COUNT;
