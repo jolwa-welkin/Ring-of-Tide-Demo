@@ -22,9 +22,11 @@
       }
 
       .panel {
-          margin-top: 50px;
-          width: min(1100px, 92vw);
-          height: 80vh;
+          box-sizing: border-box;
+          width: calc(100vw - 2 * var(--gap-x));
+          height: calc(100vh - var(--gap-top) - var(--gap-bot));
+          margin: var(--gap-top) var(--gap-x) var(gap-bot);
+          
           backgound: rgba(255, 255, 255, 0.5); /*透明度：越小越透明*/
           border-radius: 20px;
           border: 1px solid rgba(255,255,255,0.2);
