@@ -99,7 +99,7 @@
     }, orbitPropsEqual);
 
     function App() {
-      const orbitR = 220; // ★★★ 这一行是关键，必须加上！
+      const orbitR = 220; 
       const [state, setState] = useState(() => {
         return loadState() || {
           season: { rings: 0, coins: 0 },
@@ -156,10 +156,10 @@
                     <div className="absolute inset-10 rounded-full border border-white/10"></div>
                     <div className="absolute inset-0 border-t border-white/15 top-1/2"></div>
                     <div className="absolute inset-0 border-l border-white/15 left-1/2"></div>
-                    <div className="absolute left-1/4 top-[12%] text-xs opacity-70">健康</div>
-                    <div className="absolute right-[12%] top-1/4 text-xs opacity-70">社交</div>
-                    <div className="absolute left-1/4 bottom-[12%] text-xs opacity-70">学习</div>
-                    <div className="absolute right-[12%] bottom-1/4 text-xs opacity-70">生活</div>
+                    <div className="absolute left-1/4 top-1/4 text-xs opacity-70">健康</div>
+                    <div className="absolute right-1/4 top-1/4 text-xs opacity-70">社交</div>
+                    <div className="absolute left-1/4 bottom-1/4 text-xs opacity-70">学习</div>
+                    <div className="absolute right-1/4 bottom-1/4 text-xs opacity-70">生活</div>
                   </div>
                 </div>
 
