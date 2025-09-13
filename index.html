@@ -5,7 +5,11 @@
       body {
           margin: 0;
           background-color: #0a0a23;
-          height: 100vh;
+          min-height: 100vh;
+          padding-top: 56px;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
       }
 
       h1 {
@@ -16,9 +20,23 @@
           font-weight: 600;
           color: #e6e8ff;
       }
+
+      .panel {
+          width: min(900px, 90vw);
+          height: 60vh;
+          backgound: rgba(255, 255, 255, 0.12); /*透明度：越小越透明*/
+          border-radius: 20px;
+          border: 1px solid rgba(255,255,255,0.1);
+          box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+          backdrop-filter: blur(6px); /*毛玻璃？*/
+          -webkit-backdrop-filter: blur(6px);
+          box-sizing: border-box;
+          padding: 16px;
+      }
     </style>
 </head>
 <body>
     <h1>浪环 · Today</h1>h1
+    <div class="panel"></div>
 </body>
 </html>
