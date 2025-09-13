@@ -43,8 +43,8 @@
           padding: 8px;
           margin-top: 0;
 
-          background: rgba(255, 255, 255, 0.1); /*后续要加圆角要在这后面加*/
-          border: 1px solid rgba (255, 255, 255, 0.2);
+          background: rgba(255,255,255,0.1); /*后续要加圆角要在这后面加*/
+          border: 1px solid rgba (255,255,255,0.2);
           border-radius: 20px; 
           box-shadow: 0 6px 18px rgba(0,0,0,0.25);
           backdrop-filter: blur(6px);
@@ -56,11 +56,11 @@
           transition: opacity .18s ease, transform .18s ease;
       }
       /*鼠标悬停展开menu*/
-      h1: hover .menu,
-      h1: focus-within .menu {
+      h1:hover .menu,
+      h1:focus-within .menu {
           opacity: 1;
           transform: translateX(0);
-          pointer0events: auto;
+          pointer-events: auto;
       }
 
       /*菜单样式*/
@@ -82,7 +82,7 @@
           height: calc(100vh - var(--gap-top) - var(--gap-bot));
           margin: var(--gap-top) var(--gap-x) var(--gap-bot);
           
-          background: rgba(255, 255, 255, 0.1); /*透明度：越小越透明*/
+          background: rgba(255,255,255,0.1); /*透明度：越小越透明*/
           border-radius: 20px;
           border: 1px solid rgba(255,255,255,0.2);
           box-shadow: 0 6px 18px rgba(0,0,0,0.25);
