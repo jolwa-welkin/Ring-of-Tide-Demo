@@ -24,7 +24,7 @@
           height: var(--gap-top, 96px); 
           display: flex;
           align-items: center;
-          gap: 28 px;
+          gap: 28px;
           margin: 0;
           list-style: none;
           
@@ -36,11 +36,14 @@
           pointer-events: none;
           transform: none !important;
           transition: opacity 0.15s ease;
-          index: 11;
+          z-index: 11;
       }
       /*鼠标在顶带内显示菜单*/
-      h1:hover .menu,
-      h1:focus-within .menu, 
+      h1:hover .menu {
+          opacity: 1;
+          pointer-events: auto;
+      }
+      h1:focus-within .menu {
           opacity: 1;
           pointer-events: auto;
       }
@@ -50,12 +53,13 @@
               position: fixed;
               top: 0; left: 0; right: 0;
               height: 0;
-              pointer-events: auto;
+              pointer-events: none;
               z-index: 9;
           }
       h1:hover::before,
       h1:focus-within::before {
           height: var(--gap-top, 96px);
+          pointer-events: auto;
       }
 
       h1 {
@@ -84,7 +88,7 @@
       }
 
       h1 .menu a:hover,
-      hi .menu a:focus-visible {
+      h1 .menu a:focus-visible {
           color: #ffffff;
           text-shadow:
               0 0 6px rgba(255,255,255,0.35),
