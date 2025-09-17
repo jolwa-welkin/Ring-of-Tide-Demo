@@ -18,6 +18,46 @@
           align-items: flex-start;
       }
 
+      h1 .menu {
+          position: fixed;
+          top: 0; left: 0; right: 0;
+          height: var(--gap-top, 96px); 
+          display: flex;
+          align-items: center;
+          gap: 28 px;
+          margin: 0;
+          list-style: none;
+          
+          background: transparent;
+          border: 0;
+          box-shadow: none;
+        
+          opacity: 0;
+          pointer-events: none;
+          transform: none !important;
+          transition: opacity 0.15s ease;
+          index: 11;
+      }
+      /*鼠标在顶带内显示菜单*/
+      h1:hover .menu,
+      h1:focus-within .menu, 
+          opacity: 1;
+          pointer-events: auto;
+      }
+
+      h1::before {
+              content:"";
+              position: fixed;
+              top: 0; left: 0; right: 0;
+              height: 0;
+              pointer-events: auto;
+              z-index: 9;
+          }
+      h1:hover::before,
+      h1:focus-within::before {
+          height: var(--gap-top, 96px);
+      }
+
       h1 {
           position: fixed; 
           top: 0; left: 0;
@@ -27,14 +67,6 @@
           font-weight: 600;
           color: #e6e8ff;
           z-index: 10;
-
-      }
-
-      h1::before {
-          content: "";
-          position: fixed;
-          top: 0; left: 0; right: 0;
-          height: var(--gap-top, 96px);
       }
       h1 > a {
           display: inline-block;
@@ -42,41 +74,9 @@
           text-decoration: none;
       }
 
-      h1 .menu {
-          position: fixed;
-          top: 0; left: 0; right: 0;
-          height: var(--gap-top, 180px); 
-          display: flex;
-          align-items: center;
-          gap: 28 px;
-          margin: 0;
-          list-style: none;
-
-          padding-left: calc(var(--gap-x, 200px) + 140px);
-          
-          background: transparent;
-          border: 0;
-          box-shadow: none;
-          backdrop-filter: none;
-          -webkit-backdrop-filter: none;
-
-          opacity: 0;
-          pointer-events: none;
-          transform: none !important;
-          transition: opacity 0.15s ease;
-      }
-      /*鼠标在顶带内显示菜单*/
-      h1:hover .menu,
-      h1:focus-within .menu, 
-      h1 .menu:hover {
-          opacity: 1;
-          transform: none;
-          pointer-events: auto;
-      }
-
       h1 .menu a {
           display: inline-block;
-          padding: 6px 10px;
+          padding: 6px 8px;
           border-radius: 6px;
           color: #e6e8ff;
           text-decoration: none;
