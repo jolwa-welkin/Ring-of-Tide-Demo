@@ -1,75 +1,140 @@
-<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Ring of Tide · Pools</title>
-  <style>
-    :root {
-      --gap-x: 40px;
-      --gap-top: 72px;
-      --gap-bot: 40px;
-      --bgcolor: #0a0a23;
-    }
-    body {
-      margin: 0;
-      background-color: var(--bgcolor);
-      min-height: 100vh;
-      padding-top: 56px; /* 你当前文件是 56px，这里保持一致 */
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-    }
-    h1 {
-      position: fixed; top: 0; left: 0;
-      height: var(--gap-top);
-      line-height: var(--gap-top);
-      display: flex; justify-content: center;
-      padding: 0 16px;
-      font-size: 20px; font-weight: 570; color: #e6e8ff;
-      z-index: 11; margin: 0;
-    }
-    h1 .menu {
-      position: fixed; top: 0; left: 0; right: 0;
-      height: var(--gap-top);
-      display: flex; align-items: center;
-      font-size: 20px; gap: 28px; margin-top: 0; margin-left: 157px;
-      list-style: none; opacity: 0; pointer-events: none; transition: opacity .15s ease;
-    }
-    h1:hover .menu, h1:focus-within .menu { opacity: 1; pointer-events: auto; }
-    h1::before { content:""; position: fixed; top:0; left:0; right:0; height:0; pointer-events:none; z-index:9; }
-    h1:hover::before, h1:focus-within::before { height: var(--gap-top); pointer-events:auto; }
-    h1 > a { color: inherit; text-decoration: none; }
-    h1 .menu a { padding: 6px 8px; border-radius: 6px; color:#e6e8ff; text-decoration:none; }
-    h1 .menu a:hover,
-    h1 .menu a:focus-visible {
-      color: #ffffff;
-      text-shadow:
-        0 0 6px rgba(255,255,255,0.35),
-        0 0 14px rgba(138,167,255,0.35);
-    }
-    .panel {
-      box-sizing: border-box;
-      width: calc(100vw - 2 * var(--gap-x));
-      height: calc(100vh - var(--gap-top) - var(--gap-bot));
-      margin: var(--gap-top) var(--gap-x) var(--gap-bot);
-      background: rgba(255,255,255,0.1);
-      border-radius: 20px; border: 1px solid rgba(255,255,255,0.2);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-      padding: 16px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <style>
+      :root {
+          --gap-x: 40px; /*左右边距*/
+          --gap-top: 72px; /*顶部边距*/
+          --gap-bot: 40px; /*底部边距*/
+          --bgcolor: #0a0a23;
+          /*没写的（到时候需要查找就不用翻找了）：
+          h1:
+              font size 20px
+              font weight 570
+              color：#e6e8ff
+          */
+      }
+/*背景啥的*/ 
+      body {
+          margin: 0;
+          background-color: var(--bgcolor);
+          min-height: 100vh;
+          padding-top: 56px;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+      }
+/*标题*/
+      h1 {
+          position: fixed; 
+          top: 0; left: 0;
+          height: var(--gap-top);
+          line-height: var(--gap-top);
+          display: flex;
+          justify-content: center;
+          padding: 0px 16px;
+          font-size: 20px;
+          font-weight: 570;
+          color: #e6e8ff;
+          z-index: 11;
+          margin: 0;
+          /*background: rgba(255,0,0,0.2);*/
+      }
+        
+      h1 .menu {
+          position: fixed;
+          top: 0; left: 0; right: 0;
+          height: var(--gap-top); 
+          display: flex;
+          align-items: center;
+          font-size: 20px;
+          gap: 28px;
+          margin-top: 0;
+          margin-left: 157px;
+          list-style: none;
+          
+          /*background: rgba(255,0,0,0.2);*/
+          border: 0;
+          box-shadow: none;
+        
+          opacity: 0;
+          pointer-events: none;
+          transform: none !important;
+          transition: opacity 0.15s ease;
+          z-index: 10;
+      }
+      /*鼠标在顶带内显示菜单*/
+      h1:hover .menu {
+          opacity: 1;
+          pointer-events: auto;
+      }
+      h1:focus-within .menu {
+          opacity: 1;
+          pointer-events: auto;
+      }
+
+      h1::before {
+              content:"";
+              position: fixed;
+              top: 0; left: 0; right: 0;
+              height: 0;
+              pointer-events: none;
+              z-index: 9;
+          }
+      h1:hover::before,
+      h1:focus-within::before {
+          height: var(--gap-top, 96px);
+          pointer-events: auto;
+      }
+
+      h1 > a {
+          display: inline-block;
+          color: inherit;
+          text-decoration: none;
+      }
+
+      h1 .menu a {
+          display: inline-block;
+          padding: 6px 8px;
+          border-radius: 6px;
+          color: #e6e8ff;
+          text-decoration: none;
+          transition: color .18s ease, text-shadow .18s ease;
+      }
+
+      h1 .menu a:hover,
+      h1 .menu a:focus-visible {
+          color: #ffffff;
+          text-shadow:
+              0 0 6px rgba(255,255,255,0.35),
+              0 0 14px rgba(138,167,255,0.35);
+      }
+
+      .panel {
+          box-sizing: border-box;
+          width: calc(100vw - 2 * var(--gap-x));
+          height: calc(100vh - var(--gap-top) - var(--gap-bot));
+          margin: var(--gap-top) var(--gap-x) var(--gap-bot);
+          
+          background: rgba(255,255,255,0.1); /*透明度：越小越透明*/
+          border-radius: 20px;
+          border: 1px solid rgba(255,255,255,0.2);
+          box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+          backdrop-filter: blur(6px); /*毛玻璃？*/
+          -webkit-backdrop-filter: blur(6px);
+          box-sizing: border-box;
+          padding: 16px;
+      }
+    </style>
 </head>
 <body>
-  <h1>
-    <a href="index.html">Ring of Tide · Pools</a>
-    <ul class="menu">
-      <li><a href="index.html">Today</a></li>
-      <li><a href="pools.html">Pools</a></li>
-    </ul>
-  </h1>
-  <div class="panel">
-    <!-- 等你给需求，这里我们开始搭“Pools”的真实内容 -->
-  </div>
+    <h1>
+        <a href="index.html">Ring of Tide · Pools</a>
+        <ul class="menu">
+            <li><a href="index.html">Today</a></li>
+            <li><a href="pools.html">Pools</a></li>
+        </ul>
+    </h1>
+    <div class="panel"></div>
 </body>
 </html>
