@@ -19,7 +19,7 @@
           margin: 0;
           background-color: var(--bgcolor);
           min-height: 100vh;
-          padding-top: 56px;
+          padding-top: var(--gap-top);
           display: flex;
           justify-content: center;
           align-items: flex-start;
@@ -114,7 +114,7 @@
           box-sizing: border-box;
           width: calc(100vw - 2 * var(--gap-x));
           height: calc(100vh - var(--gap-top) - var(--gap-bot));
-          margin: var(--gap-top) var(--gap-x) var(--gap-bot);
+          margin: 0 var(--gap-x) var(--gap-bot);
           
           background: rgba(255,255,255,0.1); /*透明度：越小越透明*/
           border-radius: 20px;
@@ -124,6 +124,7 @@
           -webkit-backdrop-filter: blur(6px);
           box-sizing: border-box;
           padding: 16px;
+          
       }
     </style>
 </head>
