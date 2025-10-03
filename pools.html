@@ -7,6 +7,10 @@
           --gap-top: 72px; /*顶部边距*/
           --gap-bot: 40px; /*底部边距*/
           --bgcolor: #0a0a23;
+
+          --hub: 320px; /*圆环直径*/
+          --node: 88px; /*每个节点的直径*/
+          --gap: 12px; /*节点离圆的额外间隔*/
           /*没写的（到时候需要查找就不用翻找了）：
           h1:
               font size 20px
@@ -135,9 +139,7 @@
           place-items: center;
       }
       .hub{
-          position: relative;
-          width: 320px;
-          height: 320px;
+          width: var(--hub); height: var(--hub);
       }
       .ring{
           position: absolute; inset: 0;
@@ -168,7 +170,7 @@
 
       .node{
           position: absolute;
-          width: 86px; height: 86px;
+          width: var(--node); height: var(--node);
           border: none; padding: 0; background: transparent;
           border-radius: 50%;
           display: grid; place-items: center;
@@ -176,17 +178,29 @@
       }
 
       .node .icon-img {
-          width: 40px;
-          height: 40px;
+          width: calc(var(--node) * 0.64); /*节点大小*/
+          height: calc(var(--node) * 0.64);
           border-radius: 50%;
           object-fit: cover;
           display: block;
       }
 
-      .node-health{ right: -20px; top: 50%; transform: translateY(-50%); }
-      .node-social{ left: -20px; top: 50%; transform: translateY(-50%); }
-      .node-growth{ bottom: -20px; left: 50%; transform: translateX(-50%); }
-      .node-study{ top: -20px; left: 50%; transform: translateX(-50%); }
+      .node-health{
+          top: calc(-0.5 * var(--node) - var(--gap));
+          right: calc(-0.5 * var(--node) - var(--gap));
+      }
+      .node-social{ 
+          top: calc(-0.5 * var(--node) - var(--gap));
+          left: calc(-0.5 * var(--node) - var(--gap));
+      }
+      .node-growth{
+          bottom: calc(-0.5 * var(--node) - var(--gap));
+          right: calc(-0.5 * var(--node) - var(--gap));
+      }
+      .node-study{ 
+          bottom: calc(-0.5 * var(--node) - var(--gap));
+          left: calc(-0.5 * var(--node) - var(--gap));
+      }
     </style>
 </head>
 <body>
