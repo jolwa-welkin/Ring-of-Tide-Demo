@@ -136,8 +136,8 @@
       }
       .hub{
           position: relative;
-          width: 520px;
-          height: 520px;
+          width: 320px;
+          height: 320px;
       }
       .ring{
           position: absolute; inset: 0;
@@ -166,6 +166,15 @@
           pointer-events: none;
       }
 
+      .node{
+          position: absolute;
+          width: 86px; height: 86px;
+          border: none; padding: 0; background: transparent;
+          border-radius: 50%;
+          display: grid; place-items: center;
+          cursor: pointer;
+      }
+
       .node .icon-img {
           width: 40px;
           height: 40px;
@@ -173,6 +182,11 @@
           object-fit: cover;
           display: block;
       }
+
+      .node-health{ right: -20px; top: 50%; transform: translateY(-50%); }
+      .node-social{ left: -20px; top: 50%; transform: translateY(-50%); }
+      .node-growth{ bottom: -20px; left: 50%; transform: translateX(-50%); }
+      .node-study{ top: -20px; left: 50%; transform: translateX(-50%); }
     </style>
 </head>
 <body>
@@ -187,19 +201,19 @@
         <div class="world" aria-label="Tasks Map">
             <div class="hub">
                 <div class="ring"></div>
-                <button class="node" style="--c:#ff4f7a" data-label="Health" aria-label="Health">
+                <button class="node node-health" style="--c:#ff4f7a" data-label="Health" aria-label="Health">
                     <img src="health.png" alt="Health" class="icon-img">
                 </button>
 
-                <button class="node" style="--c:#20cbd0" data-label="Social" aria-label="Social">
+                <button class="node node-social" style="--c:#20cbd0" data-label="Social" aria-label="Social">
                     <img src="social.png" alt="Social" class="icon-img">
                 </button>
 
-                <button class="node" style="--c:#ffd166" data-label="Growth" aria-label="Growth">
+                <button class="node node-growth" style="--c:#ffd166" data-label="Growth" aria-label="Growth">
                     <img src="growth.png" alt="Growth" class="icon-img">
                 </button>
 
-                <button class="node" style="--c:#7b7bff" data-label="Study" aria-label="Study">
+                <button class="node node-study" style="--c:#7b7bff" data-label="Study" aria-label="Study">
                     <img src="study.png" alt="Study" class="icon-img">
                 </button>
             </div>
