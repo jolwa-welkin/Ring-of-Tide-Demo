@@ -9,8 +9,8 @@
           --bgcolor: #0a0a23;
 
           --hub: 320px; /*圆环直径*/
-          --node: 88px; /*每个节点的直径*/
-          --gap: 12px; /*节点离圆的额外间隔*/
+          --node: 104px; /*每个节点的直径*/
+          --gap: 18px; /*节点离圆的额外间隔*/
           /*没写的（到时候需要查找就不用翻找了）：
           h1:
               font size 20px
@@ -139,6 +139,7 @@
           place-items: center;
       }
       .hub{
+          position: relative;
           width: var(--hub); height: var(--hub);
       }
       .ring{
@@ -148,15 +149,14 @@
           box-shadow: none;
       }
       .ring::before{
-          content: "";
-          position: absolute; inset: -8px;
+          content:"";
+          position: absolute; inset:-8px;
           border-radius: 50%;
-          background: radial-gradient(closest-side,
+          background: radial-gradient(closest-side, transparent 96%,
                                       rgba(255,255,255,0) 96%,
                                       rgba(255,255,255,0.28) 98%,
                                       rgba(255,255,255,0) 100%);
           filter: blur(10px);
-          pointer-events: none;
       }
       .ring::after{
           content: "";
@@ -164,8 +164,7 @@
           border-radius: 50%;
           border: 3px solid #fff;
           box-shadow:
-              0 0 6px egba(255,255,255,0.35);
-          pointer-events: none;
+              0 0 6px rgba(255,255,255,0.35);
       }
 
       .node{
@@ -178,8 +177,8 @@
       }
 
       .node .icon-img {
-          width: calc(var(--node) * 0.64); /*节点大小*/
-          height: calc(var(--node) * 0.64);
+          width: calc(var(--node) * 0.68); /*节点大小*/
+          height: calc(var(--node) * 0.68);
           border-radius: 50%;
           object-fit: cover;
           display: block;
