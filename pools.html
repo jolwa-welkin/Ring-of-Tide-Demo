@@ -177,8 +177,8 @@
       }
 
       .node .icon-img {
-          width: calc(var(--node) * 0.7); /*节点大小*/
-          height: calc(var(--node) * 0.7);
+          width: calc(var(--node) * 0.8); /*节点大小*/
+          height: calc(var(--node) * 0.8);
           border-radius: 50%;
           object-fit: cover;
           display: block;
@@ -226,6 +226,8 @@
           transform: translateY(-50%) translateX(4px);
       }
       .node-health::after{
+          left: calc(100% + 12px);
+          transform: translateY(-50%);
       }
       .node-social::after{
           left: auto; right: calc(100% + 12px);
