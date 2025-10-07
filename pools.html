@@ -194,11 +194,11 @@
       }
       .node-growth{
           bottom: calc(-0.5 * var(--node) - var(--gap));
-          left: calc(-0.5 * var(--node) - var(--gap));
+          right: calc(-0.5 * var(--node) - var(--gap));
       }
       .node-study{ 
           bottom: calc(-0.5 * var(--node) - var(--gap));
-          right: calc(-0.5 * var(--node) - var(--gap));
+          left: calc(-0.5 * var(--node) - var(--gap));
       }
         /*节点动画在这*/
       .node::after{
@@ -238,24 +238,24 @@
           transform: translateY(-50%) translateX(-4px);
       }
 
-      .node-study::after{
+      .node-growth::after{
           top: auto; bottom: 50%;
           left: auto; right: calc(100% + 12px);
           transform: translateY(50%);
       }
 
-      .node-study:hover::after,
-      .node-study:focus-visible::after{
+      .node-growth:hover::after,
+      .node-growth:focus-visible::after{
           transform: translateY(50%) translateX(-4px);
       }
 
-      .node-growth::after{
+      .node-social::after{
           top: auto; bottom: 50%;
           left: calc(100% + 12px);
           transform: translateY(50%);
       }
-      .node-growth:hover::after,
-      .node-growth:focus-visible::after{
+      .node-social:hover::after,
+      .node-social:focus-visible::after{
           transform: translateY(50%) translateX(4px);
       }
         
