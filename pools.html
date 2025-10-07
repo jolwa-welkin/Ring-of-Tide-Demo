@@ -240,23 +240,23 @@
 
       .node-growth::after{
           top: auto; bottom: 50%;
-          left: auto; right: calc(100% + 12px);
+          right: auto; left: calc(100% + 12px);
           transform: translateY(50%);
       }
 
       .node-growth:hover::after,
       .node-growth:focus-visible::after{
-          transform: translateY(50%) translateX(-4px);
+          transform: translateY(50%) translateX(4px);
       }
 
       .node-study::after{
           top: auto; bottom: 50%;
-          left: calc(100% + 12px);
+          left: auto; right: calc(100% + 12px);
           transform: translateY(50%);
       }
       .node-study:hover::after,
       .node-study:focus-visible::after{
-          transform: translateY(50%) translateX(4px);
+          transform: translateY(50%) translateX(-4px);
       }
         
     </style>
